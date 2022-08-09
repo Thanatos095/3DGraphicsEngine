@@ -1,5 +1,6 @@
 #include <iostream>
 #include <memory>
+#include <fstream>
 #include <Renderer.hpp>
 #include <Scene.hpp>
 #include <SceneObject.hpp>
@@ -11,22 +12,26 @@
 class myScene : public Scene{
 	public:
 		myScene() : 
-			teapot(VertexArray::LoadFromFile("Models/teapot.obj")){
-			this->AddObjectToScene(teapot);
+			teapot1(VertexArray::LoadFromFile("Models/teapot.obj")),
+			teapot2(VertexArray::LoadFromFile("Models/teapot.obj")){
+			this->AddObjectToScene(teapot1);
+			this->AddObjectToScene(teapot2);
 			this->SetActiveCamera(cam);
 		}
 		void start(){
-			teapot.setPosition(0, 0, 0);
-			teapot.scale(0.7, 0.7, 0.7);
+			teapot1.setPosition(-5, 0, 0);
+			teapot1.scale(0.7, 0.7, 0.7);
+			teapot1.setPosition(5, 0, 0);
+			teapot1.scale(0.7, 0.7, 0.7);
 		}
 		void update(){
 			const float speed = 3.f;
 			cam.controller(speed);
-			teapot.rotate(glm::vec3(0, 90, 0) * Renderer.getDeltaTime());
+			// teapot.rotate(glm::vec3(0, 90, 0) * Renderer.getDeltaTime());
 		}
 	private:
 		Camera cam;
-		SceneObject teapot;
+		SceneObject teapot1, teapot2;
 };
 
 

@@ -1,6 +1,7 @@
 #ifndef SHADER_HPP
 #define SHADER_HPP
 #include <iostream>
+#include <fstream>
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 #include <unordered_map>
@@ -15,6 +16,7 @@ class Shader{
         Shader& operator=(Shader&& shader);
         void create(const std::string &vertexShader, const std::string &fragmentShader);
         static Shader DefaultShader();
+        static Shader LoadFromFile(const std::string &path);
         ~Shader();
         void bind();
         unsigned int getId();

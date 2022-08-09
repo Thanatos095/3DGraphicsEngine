@@ -47,6 +47,18 @@ Shader Shader::DefaultShader(){
 	)";
     return Shader(vertexShader, fragmentShader);
 }
+Shader Shader::LoadFromFile(const std::string& path){
+    std::ifstream fin("Shaders/basic.shader");
+	std::string in;
+	std::string result = "";
+	while(std::getline(fin, in)){
+		result += in + '\n';
+	}
+	fin.close();
+	size_t i = result.find("#VERTEX_SHADER");
+	size_t j = result.find("#FRAGMENT_SHADER");
+    return Shader(result.substr(i + 14, j - 14), result.substr(j + 17, result.length() - j -17));
+}
 void Shader::bind(){
     glUseProgram(this->shaderId);
 }

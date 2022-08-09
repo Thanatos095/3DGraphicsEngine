@@ -12,7 +12,7 @@ Camera::Camera(float FOV, float near, float far, glm::vec3 position, glm::vec3 r
 void Camera::controller(const float speed){
 
     static glm::vec2 lastMousePos(Renderer.getWindowWidth()/2, Renderer.getWindowHeight()/2);
-    glm::vec2 rot = (lastMousePos - Input.getMousePosition()) * 0.5f;
+    glm::vec2 rot = (lastMousePos - Input.getMousePosition()) * 0.1f;
     lastMousePos = Input.getMousePosition();
     this->m_rotation[0] += rot[1];
     this->m_rotation[1] += rot[0];

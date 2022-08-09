@@ -27,7 +27,6 @@ class Renderer : public Window
         float getDeltaTime();
         ~Renderer();
     private:
-        using Window::close;
         using Window::clear;
         using Window::draw;
         using Window::display;

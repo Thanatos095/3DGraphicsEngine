@@ -19,7 +19,9 @@ void Renderer::setScene(std::shared_ptr<Scene> scene){
 float Renderer::getDeltaTime(){
 	return this->deltaTime;
 }
-
+void Renderer::setShader(Shader&& shader){
+	this->defaultShader = std::move(shader);
+}
 glm::mat4 Renderer::transform(const SceneObject& obj){
 	glm::mat4 Scale, Rotation, Translate;
 	Scale = glm::scale(glm::mat4(1.f), obj.getSize());

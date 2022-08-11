@@ -37,7 +37,8 @@ class myScene : public Scene{
 
 int main(void)
 {
-	// Renderer.setSize(800, 600);
+	Renderer.setSize(800, 600);
+	Renderer.setShader(Shader::LoadFromFile("Shaders/basic.shader"));
 	Renderer.setTitle("Meow");
 	Renderer.setScene(std::make_shared<myScene>());
 	Renderer.mainLoop();

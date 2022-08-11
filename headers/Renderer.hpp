@@ -24,6 +24,7 @@ class Renderer : public Window
         static Renderer& getInstance();
         void mainLoop();
         void setScene(std::shared_ptr<Scene> scene);
+        void setShader(Shader && shader);
         float getDeltaTime();
         ~Renderer();
     private:

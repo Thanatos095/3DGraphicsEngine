@@ -16,7 +16,7 @@ Window::Window(size_t window_width, size_t window_height, const std::string &nam
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     this->m_monitor = glfwGetPrimaryMonitor();
     this->m_window = glfwCreateWindow(window_width, window_height, name.c_str(), NULL, NULL);
-    // glfwSetInputMode(this->m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);  
+    glfwSetInputMode(this->m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);  
 }
 Window::Window(){
     if (!glfwInit())

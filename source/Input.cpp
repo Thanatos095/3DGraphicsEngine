@@ -13,6 +13,9 @@ glm::vec2 Input::getMousePosition() const{
     glfwGetCursorPos(this->m_window_ref, &x, &y);
     return glm::vec2{x, y};
 }
+void Input::setMousePosition(double x, double y){
+    glfwSetCursorPos(this->m_window_ref, x, y);
+}
 void Input::setTarget(GLFWwindow *window){
     this->m_window_ref = window;
 }

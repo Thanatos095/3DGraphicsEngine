@@ -132,6 +132,7 @@ class Input{
         };
         bool isKeyPressed(Key key);
         glm::vec2 getMousePosition() const;
+        void setMousePosition(double x, double y);
     private:
         Input(GLFWwindow * window);
         Input();

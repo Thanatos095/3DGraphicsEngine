@@ -45,7 +45,7 @@ class Renderer : public Window
         void operator=(Renderer const&)  = delete;
 };
 
-inline class Renderer& Renderer = Renderer::getInstance();
-inline class Input& Input = Renderer::getInstance().getInput();
+inline Renderer& Engine = Renderer::getInstance();
+inline Input& In = Renderer::getInstance().getInput();
 
 #endif

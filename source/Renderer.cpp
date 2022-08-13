@@ -8,7 +8,7 @@ Renderer::Renderer() : m_scene(nullptr)
 }
 Renderer::~Renderer(){}
 
-class Renderer& Renderer::getInstance(){
+Renderer& Renderer::getInstance(){
 	static Renderer instance;
     return instance;
 }

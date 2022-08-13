@@ -22,6 +22,7 @@ class Shader{
         unsigned int getId();
         void provideMat4f(const std::string & variableName,const glm::mat4 &mat);
         void provideVec4f(const std::string & variableName, float f0, float f1, float f2, float f3);
+        void provideInt(const std::string & variableName, int value);
     private:
         std::unordered_map<std::string, int> locations;
         unsigned int shaderId;

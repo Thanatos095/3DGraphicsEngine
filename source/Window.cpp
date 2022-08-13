@@ -62,6 +62,9 @@ void Window::close(){
     glfwSetWindowShouldClose(this->m_window, 1);
     glfwDestroyWindow(this->m_window);
 }
+void Window::setClearColor(glm::vec4 color){
+    glClearColor(color[0], color[1], color[2], color[3]);
+}
 void Window::clear(){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);  
 }

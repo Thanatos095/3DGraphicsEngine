@@ -6,23 +6,18 @@
 #include <SceneObject.hpp>
 #include <VertexArray.hpp>
 #include <Input.hpp>
-#include <Window.hpp>
+
 #include <Camera.hpp>
-#include <glm/gtx/string_cast.hpp>
+
 class myScene : public Scene{
 	public:
 		myScene() : 
-			teapot1(VertexArray::LoadFromFile("Models/teapot.obj")),
-			teapot2(VertexArray::LoadFromFile("Models/teapot.obj")){
-			this->AddObjectToScene(teapot1);
-			this->AddObjectToScene(teapot2);
+			cube(VertexArray::LoadFromFile("Models/cube.obj")){
+			this->AddObjectToScene(cube);
 			this->SetActiveCamera(cam);
 		}
 		void start(){
-			teapot1.setPosition(-5, 0, 0);
-			teapot1.scale(0.7, 0.7, 0.7);
-			teapot1.setPosition(5, 0, 0);
-			teapot1.scale(0.7, 0.7, 0.7);
+
 		}
 		void update(){
 			const float speed = 3.f;
@@ -31,17 +26,18 @@ class myScene : public Scene{
 		}
 	private:
 		Camera cam;
-		SceneObject teapot1, teapot2;
+		SceneObject cube;
 };
 
 
 int main(void)
 {
-	Renderer.setSize(800, 600);
-	Renderer.setShader(Shader::LoadFromFile("Shaders/basic.shader"));
-	Renderer.setTitle("Meow");
-	Renderer.setScene(std::make_shared<myScene>());
-	Renderer.mainLoop();
+	Engine.setClearColor(glm::vec4{0.2f, 0.3f, 0.3f, 1.0f});
+	Engine.setSize(800, 600);
+	Engine.setShader(Shader::LoadFromFile("Shaders/basic.shader"));
+	Engine.setTitle("Meow");
+	Engine.setScene(std::make_shared<myScene>());
+	Engine.mainLoop();
     return 0;
 }
 

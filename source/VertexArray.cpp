@@ -1,5 +1,4 @@
 #include "../headers/VertexArray.hpp"
-#include <iostream>
 VertexArray::VertexArray() : initialized(false){
 }
 VertexArray::VertexArray(float * vertices, size_t sizeVertices, float *colors, size_t sizeColors, unsigned int *indices, size_t sizeIndices) {

@@ -16,6 +16,7 @@ class Window{
         Input& getInput();
         ~Window();
         void close();
+        void setClearColor(glm::vec4 color);
         void clear();
         void draw(VertexArray& vao);
         void display();

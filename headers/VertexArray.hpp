@@ -2,10 +2,11 @@
 #define VERTEXARRAY_HPP
 
 #include <GL/glew.h>
+#include <iostream>
 #include <fstream>
 #include <sstream>
-#include "Vertex.hpp"
-#include "AttributeBuffer.hpp"
+#include <Vertex.hpp>
+#include <AttributeBuffer.hpp>
 class Window;
 class VertexArray{
     public:

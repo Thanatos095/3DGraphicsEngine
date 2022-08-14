@@ -48,7 +48,7 @@ Shader Shader::DefaultShader(){
     return Shader(vertexShader, fragmentShader);
 }
 Shader Shader::LoadFromFile(const std::string& path){
-    std::ifstream fin("Shaders/basic.shader");
+    std::ifstream fin(path);
 	std::string in;
 	std::string result = "";
 	while(std::getline(fin, in)){
@@ -76,6 +76,10 @@ void Shader::provideMat4f(const std::string & variableName,const glm::mat4 &mat)
 void Shader::provideVec4f(const std::string & variableName, float f0, float f1, float f2, float f3){
     int location = this->getLocation(variableName);
     glUniform4f(location, f0, f1, f2, f3);
+}
+void Shader::provideInt(const std::string & variableName, int value){
+    int location = this->getLocation(variableName);
+    glUniform1i(location, value);
 }
 
 unsigned int Shader::compileShader(unsigned int type, const std::string &shader){
@@ -105,6 +109,7 @@ int Shader::getLocation(const std::string& variableName){
     if(it == this->locations.end()){
         res = glGetUniformLocation(this->shaderId, variableName.c_str());
         ASSERT(res != -1);
+        this->locations.insert(std::pair<std::string, int>(variableName, res));
     }
     else res = (*it).second;
     return res;

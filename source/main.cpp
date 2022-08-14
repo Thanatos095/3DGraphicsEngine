@@ -6,25 +6,27 @@
 #include <SceneObject.hpp>
 #include <VertexArray.hpp>
 #include <Input.hpp>
-
+#include <Texture.hpp>
 #include <Camera.hpp>
 
 class myScene : public Scene{
 	public:
 		myScene() : 
+		// tex("Assets/wall.jpg"),
 			cube(VertexArray::LoadFromFile("Models/cube.obj")){
 			this->AddObjectToScene(cube);
 			this->SetActiveCamera(cam);
+			Textures.getTexture("Assets/wall.jpg");
 		}
 		void start(){
-
+			
 		}
 		void update(){
 			const float speed = 3.f;
 			cam.controller(speed);
-			// teapot.rotate(glm::vec3(0, 90, 0) * Renderer.getDeltaTime());
 		}
 	private:
+		// Texture tex;
 		Camera cam;
 		SceneObject cube;
 };
@@ -34,7 +36,7 @@ int main(void)
 {
 	Engine.setClearColor(glm::vec4{0.2f, 0.3f, 0.3f, 1.0f});
 	Engine.setSize(800, 600);
-	Engine.setShader(Shader::LoadFromFile("Shaders/basic.shader"));
+	Engine.setShader(Shader::LoadFromFile("Shaders/Texture.shader"));
 	Engine.setTitle("Meow");
 	Engine.setScene(std::make_shared<myScene>());
 	Engine.mainLoop();

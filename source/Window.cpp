@@ -70,7 +70,7 @@ void Window::clear(){
 }
 void Window::draw(VertexArray& vao){
     vao.bind();
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glDrawElements(GL_TRIANGLES, vao.indices.size(), GL_UNSIGNED_INT, nullptr);
 }
 void Window::display(){

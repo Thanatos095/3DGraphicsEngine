@@ -12,6 +12,9 @@ Renderer& Renderer::getInstance(){
 	static Renderer instance;
     return instance;
 }
+TextureManager& Renderer::getTextureManager(){
+	return this->m_manager;
+}
 void Renderer::setScene(std::shared_ptr<Scene> scene){
 	this->m_scene = scene;
 }
@@ -37,6 +40,7 @@ void Renderer::mainLoop(){
 		throw std::runtime_error("No active scene in the renderer.");
 
 	defaultShader.bind();
+	defaultShader.provideVec4f("u_color", 1, 1, 1, 1);
 	m_scene->start();
     while (this->isOpen())
     {	
@@ -44,10 +48,9 @@ void Renderer::mainLoop(){
 		this->pollEvents();
 		this->clear();
 		m_scene->update();
-		// std::cout << m_scene->m_objects.size()<< '\n';
 		for(SceneObject* obj : m_scene->m_objects){
 			glm::mat4 MVP = transform(*obj);
-			defaultShader.provideMat4f("MVP", MVP);
+			defaultShader.provideMat4f("u_MVP", MVP);
 			this->draw(obj->m_mesh);
 	    }
 		this->display();

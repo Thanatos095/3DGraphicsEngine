@@ -5,25 +5,22 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <Vertex.hpp>
+#include <unordered_map>
 #include <AttributeBuffer.hpp>
 class Window;
 class VertexArray{
     public:
-        VertexArray(float * vertices, size_t sizeVertices, float *colors, size_t sizeColors, unsigned int *indices, size_t sizeIndices);
+        // VertexArray(float * vertices, size_t sizeVertices, float *colors, size_t sizeColors, unsigned int *indices, size_t sizeIndices);
         static VertexArray LoadFromFile(const std::string &path);
         VertexArray();
         ~VertexArray();
         size_t getNumFaces() const;
         size_t getNumVertices() const;
-        Vertex operator[](size_t i);
-        void pushVertex(const Vertex& vertex);
-        void pushFace(size_t v1, size_t v2, size_t v3);
     private:
         void bind();
         void unbind();
         void genBuffers();
-        FloatBuffer m_vertices, m_colors;
+        FloatBuffer m_positions, m_texture_coordinates;
         UintBuffer indices;
         bool initialized;
         unsigned int m_id;

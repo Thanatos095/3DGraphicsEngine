@@ -17,11 +17,12 @@
 #include <Window.hpp>
 #include <Input.hpp>
 #include <Camera.hpp>
-
+#include <TextureManager.hpp>
 class Renderer : public Window
 {
     public:
         static Renderer& getInstance();
+        TextureManager& getTextureManager();
         void mainLoop();
         void setScene(std::shared_ptr<Scene> scene);
         void setShader(Shader && shader);
@@ -36,6 +37,7 @@ class Renderer : public Window
         glm::mat4 transform(const SceneObject& obj);
         float deltaTime;
         Shader defaultShader;
+        TextureManager m_manager;
         std::shared_ptr<Scene> m_scene;
         Renderer();
     /*Singleton Methods*/
@@ -47,5 +49,5 @@ class Renderer : public Window
 
 inline Renderer& Engine = Renderer::getInstance();
 inline Input& In = Renderer::getInstance().getInput();
-
+inline TextureManager Textures = Renderer::getInstance().getTextureManager();
 #endif

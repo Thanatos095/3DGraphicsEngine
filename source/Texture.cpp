@@ -1,6 +1,12 @@
 #include <Texture.hpp>
+Texture::Texture(){
+    std::cout << "Textureeee :>\n";
+}
 
 Texture::Texture(const std::string& path){
+    this->load(path);
+}
+void Texture::load(const std::string& path){
     glGenTextures(1, &this->m_id);
     glBindTexture(GL_TEXTURE_2D, this->m_id);
 
@@ -9,6 +15,8 @@ Texture::Texture(const std::string& path){
     // set texture filtering parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+
     // load image, create texture and generate mipmaps
     int width, height, nrChannels;
     stbi_set_flip_vertically_on_load(true); // tell stb_image.h to flip loaded texture's on the y-axis.
